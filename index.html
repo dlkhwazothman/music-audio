@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music Video</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/wavesurfer.js"></script>
+
+</head>
+<body> 
+    <div class="hero">
+        <div class="music">
+            <p> Artist: Tom Odell</p>
+            <h1> Song: Another Love</h1>
+            <div class="track">
+                <img src="play.png" id="playBtn" alt="">
+                <div id="waveform">
+
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+     <script>
+        var playBtn= document.getElementById("playBtn");
+        var wavesurfer = WaveSurfer.create({
+    container: '#waveform',
+    waveColor: '#ddd',
+    progressColor: '#ff006c',
+    barwidth: 4,
+    Response: true,
+    height: 90,
+    barRadius: 4
+});
+
+wavesurfer.load('Tom Odell - Another Love.mp3' );
+playBtn.onclick = function(){
+    wavesurfer.playPause(); 
+    if(playBtn.src.includes("play.png"))
+    {
+        playBtn.src= "pause.png";
+    }
+    else{
+        playBtn.src="play.png";
+
+
+    }
+    }
+wavesurfer.on('finish', function(){
+    playBtn.src="play.png";
+    wavesurfer.stop();
+
+
+})
+     </script>
+    
+</body>
+</html>
